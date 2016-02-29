@@ -1,0 +1,51 @@
+﻿<Window x:Class="Swap.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Swap"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_File">
+                    <MenuItem Header="_New" />
+                    <MenuItem Header="_Open" />
+                    <MenuItem Header="_Save" />
+                    <Separator />
+                    <MenuItem Header="_Exit" />
+                </MenuItem>
+                <MenuItem Header="_Emprunt">
+                    <MenuItem Header="Taux fixe" Command="{Binding CommandEmpruntFixe}" />
+                    <MenuItem Header="Taux variable"   Command="{Binding CommandEmpruntVariable}" />
+                    <MenuItem Header="Swap" Command="{Binding CommandSwap}"/>
+                </MenuItem>
+            </Menu>
+       
+        <Grid Background="AliceBlue">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            
+
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="2*"></RowDefinition>
+                <RowDefinition Height="2*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+                <DataGrid Grid.Row="1" Grid.Column="0" IsReadOnly="True" ItemsSource="{Binding Path=ListeSwap}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Libor"  Binding="{Binding Path=TauxVariable}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Echéance fixe" Binding="{Binding Path=EcheanceFixe}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Echéance variable"  Binding="{Binding Path=EcheanceVariable}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Différence fixe variable"  Binding="{Binding Path=DifferenceFixeVariable}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Différence variable fixe"  Binding="{Binding Path=DifferenceVariableFixe}"></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+   </DockPanel>
+    </Grid>
+        
+</Window>
